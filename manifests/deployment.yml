@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "ajaxakscluster-dcf5"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "ajaxakscluster-dcf5"
+  template:
+    metadata:
+      labels:
+        app: "ajaxakscluster-dcf5"
+    spec:
+      containers:
+        - name: "ajaxakscluster-dcf5"
+          image: "ajaxerpacr.azurecr.io/ajaxakscluster"
+          ports:
+          - containerPort: 80
