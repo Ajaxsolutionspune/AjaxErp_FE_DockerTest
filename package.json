@@ -96,5 +96,6 @@
   "engines": {
     "node": ">= 12",
     "npm": ">= 6"
-  }
+  },
+  "postinstall": "npm run build"
 }
