@@ -1,0 +1,88 @@
+<form #ObjForm="ngForm" [formGroup]="form" autocomplete="off">
+    
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-11 container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Zone</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Zone Code"
+                                [(ngModel)]="bindObj.zoneCode"
+                                formControlName="ControlzoneCode"
+                                #txtzoneCode
+                                name="txtzoneCode">
+                                <mat-error>
+                                    {{ formErrors['ControlzoneCode'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Zone Name ENG"
+                                [(ngModel)]="bindObj.zoneNameENG" required
+                                formControlName="ControlzoneNameENG"
+                                #txtzoneNameENG
+                                name="txtzoneNameENG">
+                                <mat-error>
+                                    {{ formErrors['ControlzoneNameENG'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row" style="display: none;">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Zone Name ENG"
+                                [(ngModel)]="bindObj.zoneNameUNI"
+                                formControlName="ControlzoneNameUNI"
+                                #txtzoneNameUNI
+                                name="txtzoneNameUNI">
+                                <mat-error>
+                                    {{ formErrors['ControlzoneNameUNI'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-sm-4">
+                                <mat-checkbox name="chkisActive"
+                                #chkisActive
+                                formControlName="ControlisActive"
+                                 [(ngModel)]="bindObj.isActive">Active
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <button mat-raised-button [disabled]="!form.valid" 
+                                (click)="save(ObjForm)"
+                                    color="primary">Submit</button> &nbsp;
+                                    &nbsp; &nbsp; &nbsp; &nbsp;
+                                <button mat-raised-button color="warn" routerLink="/ZoneList">
+                                    Cancel</button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+    </div>
+</form>
+<div style="display: none;"> {{bindObj | json}}</div>

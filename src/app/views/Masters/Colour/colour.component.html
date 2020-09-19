@@ -1,0 +1,88 @@
+<form #ObjForm="ngForm" [formGroup]="form" autocomplete="off">
+    <div class="animated fadeIn">
+        
+        <div class="row">
+            <div class="col-md-11 container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Colour</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Colour Code"
+                                [(ngModel)]="bindObj.colourCode"
+                                formControlName="ControlcolourCode"
+                                #txtcolourCode
+                                name="txtcolourCode">
+                                <mat-error>
+                                    {{ formErrors['ControlcolourCode'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Colour Name ENG"
+                                [(ngModel)]="bindObj.colourNameENG" required
+                                formControlName="ControlcolourNameENG"
+                                #txtcolourNameENG
+                                name="txtcolourNameENG">
+                                <mat-error>
+                                    {{ formErrors['ControlcolourNameENG'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Colour Name UNI"
+                                [(ngModel)]="bindObj.colourNameUNI"
+                                formControlName="ControlcolourNameUNI"
+                                #txtcolourNameUNI
+                                name="txtcolourNameUNI">
+                                <mat-error>
+                                    {{ formErrors['ControlregionNameUNI'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-sm-4">
+                                <mat-checkbox name="chkisActive"
+                                #chkisActive
+                                formControlName="ControlisActive"
+                                 [(ngModel)]="bindObj.isActive">Active
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <button mat-raised-button [disabled]="!form.valid" 
+                                    color="primary">Submit</button>
+                                <button mat-raised-button color="warn"
+                                 routerLink="/ColourList">
+                                 <i class="fa fa-ban"></i>
+                                    Cancel</button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<div> {{bindObj | json}}</div>

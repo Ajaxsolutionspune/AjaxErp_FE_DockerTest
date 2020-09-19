@@ -1,0 +1,54 @@
+<form #QuestionForm="ngForm" (ngSubmit)="save(QuestionForm);" autocomplete="off">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-11 container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Question Type</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <label class="col-md-2 col-form-label" for="txtquestionId">Question Type Id</label>
+                            <div class="col-sm-4">
+                                <input id="txtquestionId" [(ngModel)]="bindObj.qaTypeCode" required name="questionID"
+                                    type="text" class="form-control form-control-sm">
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <label class="col-md-2 col-form-label" for="txtquestion">Question Type D  esc</label>
+                            <div class="col-sm-4">
+                                <input id="txtquestion" required name="question" type="text"
+                                    [(ngModel)]="bindObj.qaTypeDesc" class="form-control form-control-sm">
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <label class="col-md-2 col-form-label">Active</label>
+                            <div class="col-sm-4">
+                                <input type="checkbox" [(ngModel)]="bindObj.isActive" name="IsActive"></div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i>
+                                    Submit</button>
+                                <button type="button" routerLink="/QuestionTypeList" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>
+                                    Cancel</button>
+                            </div>
+                            <div class="col-md-5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+    </div>
+</form>
+<div> {{bindObj | json}}</div>

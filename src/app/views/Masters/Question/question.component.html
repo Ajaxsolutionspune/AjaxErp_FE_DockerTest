@@ -1,0 +1,89 @@
+<form #QuestionForm="ngForm" [formGroup]="form">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-11 container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Question</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Question Id"
+                                [(ngModel)]="question.questionId"
+                                formControlName="ControlquestionId"
+                                #txtquestionId
+                                name="txtquestionId">
+                                <mat-error>
+                                    {{ formErrors['ControlquestionId'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Question * "
+                                [(ngModel)]="question.question"
+                                formControlName="Controlquestion"
+                                #txtquestion
+                                name="txtquestion" maxlength="100">
+                                <mat-error>
+                                    {{ formErrors['Controlquestion'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4"></div>
+                          <div class="col-md-4">
+                            <mat-form-field >
+                                <mat-label>Question Type</mat-label>
+                                <mat-select 
+                                formControlName="ControlqaTypeCode"
+                                [(ngModel)]="question.qaTypeCode">
+                                <mat-option *ngFor="let qaType of qaTypes" [value]="qaType.qaTypeCode">
+                                  {{qaType.qaTypeDesc}}
+                                </mat-option>
+                                </mat-select>
+                                <mat-error>
+                                    {{ formErrors['ControlqaTypeCode'] }}
+                                </mat-error>
+                              </mat-form-field>
+                          </div>
+                        </div>
+                        <div class="row">                            
+                            <div class="col-md-4"></div>
+                            <div class="col-sm-4" style="padding-top: 20px;">
+                                <mat-checkbox name="chkisActive"
+                                #chkisActive
+                                formControlName="ControlisActive"
+                                 [(ngModel)]="question.isActive">Active
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <button mat-raised-button [disabled]="!form.valid" (click)="save(QuestionForm)"
+                                    color="primary">Submit</button> &nbsp; &nbsp; &nbsp; &nbsp;
+                                <button mat-raised-button color="warn" routerLink="/QuestionList">
+                                    Cancel</button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+    </div>
+</form>
+<div style="display: none;"> {{question | json}}</div>

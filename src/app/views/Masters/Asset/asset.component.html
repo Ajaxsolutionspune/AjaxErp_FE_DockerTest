@@ -1,0 +1,438 @@
+<form #ObjForm="ngForm"  [formGroup]="form">
+ <!--/.row (ngSubmit)="save(ObjForm); "-->
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-md11 container">
+        <div class="card">
+          <div class="card-header">
+            <strong>Asset</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">      
+              <div class="col-md-2"></div>        
+              <mat-form-field class="col-md-4">
+                <input matInput placeholder="Asset Code" 
+                [(ngModel)]="bindObj.assetCode" #txtassetCode
+                formControlName="ControlassetCode"
+                  name="txtassetCode">
+              </mat-form-field> 
+              <div class="col-sm-4" style="padding-left: 12%;">
+                  <mat-checkbox name="chkisActive"
+                  #chkisActive
+                  formControlName="ControlisActive"
+                   [(ngModel)]="bindObj.isActive">Active
+                  </mat-checkbox>
+              </div>
+              <mat-form-field class="col-md-4" style="display: none;">
+                <input matInput placeholder="Asset Name UNI"
+                 [(ngModel)]="bindObj.assetNameUNI" #txtassetNameUNI
+                 formControlName="ControlassetNameUNI"
+                  name="txtassetNameUNI">
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <input matInput placeholder="Asset Name" required
+                 [(ngModel)]="bindObj.assetNameENG" #txtassetNameENG
+                 formControlName="ControlassetNameENG"
+                  name="txtassetNameENG">
+                  <mat-error>
+                  {{ formErrors['ControlassetNameENG'] }}
+                  </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label>Asset Category</mat-label>
+                <mat-select required
+                formControlName="ControlAssetCategory"
+                [(ngModel)]="bindObj.assetCategoryCode">
+                <mat-option>Asset Category</mat-option>
+                <mat-option *ngFor="let assetCategory of assetCategoryObj"
+                 [value]="assetCategory.assetCategoryCode">
+                  {{assetCategory.assetCategoryNameENG}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlAssetCategory'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <input matInput placeholder="Place Name" required
+                formControlName="ControlplaceName"
+                [(ngModel)]="bindObj.placeName" #txtplaceName
+                  name="txtplaceName">
+                  <mat-error>
+                    {{ formErrors['ControlplaceName'] }}
+                  </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label> Asset Group</mat-label>
+                <mat-select required
+                formControlName="ControlassetGroupCode"
+                [(ngModel)]="bindObj.assetGroupCode">
+                <mat-option>Asset Group</mat-option>
+                <mat-option *ngFor="let assetGroup of assetGroupObj"
+                 [value]="assetGroup.assetGroupCode">
+                  {{assetGroup.assetGroupNameENG}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlassetGroupCode'] }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <mat-label>Customer</mat-label>
+                <mat-select required 
+                formControlName="ControlcustomerCode"
+                [(ngModel)]="bindObj.customerCode">
+                <mat-option>Customer</mat-option>
+                <mat-option value="2"> Customer 2</mat-option>
+                <mat-option value="3"> Customer 3</mat-option>
+                <mat-option value="11"> Customer 11</mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlcustomerCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label>Project</mat-label>
+                <mat-select required
+                formControlName="ControlprojectCode"
+                [(ngModel)]="bindObj.projectCode">
+                <mat-option>Project</mat-option>
+                <mat-option value="1"> Project 1</mat-option>
+                <mat-option value="2"> Project 2</mat-option>
+                <mat-option value="3"> Project 3</mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlprojectCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <mat-label>Zone</mat-label>
+                <mat-select required
+                formControlName="ControlzoneCode"
+                [(ngModel)]="bindObj.zoneCode">
+                <mat-option>Zone</mat-option>
+                <mat-option *ngFor="let zone of zoneObj"
+                 [value]="zone.zoneCode">
+                  {{zone.zoneNameENG}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlzoneCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label>Circle</mat-label>
+                <mat-select required
+                formControlName="ControlcircleCode"
+                [(ngModel)]="bindObj.circleCode">
+                <mat-option>Circle</mat-option>
+                <mat-option *ngFor="let circle of circleObj"
+                 [value]="circle.circleCode">
+                  {{circle.circleNameENG}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlcircleCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <mat-label>Cluster</mat-label>
+                <mat-select required
+                formControlName="ControlclusterCode"
+                [(ngModel)]="bindObj.clusterCode">
+                <mat-option>Cluster</mat-option>
+                <mat-option *ngFor="let cluster of clusterObj"
+                 [value]="cluster.clusterCode">
+                  {{cluster.clusterNameENG}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlclusterCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label>Region</mat-label>
+                <mat-select required
+                formControlName="ControlregionCode"
+                [(ngModel)]="bindObj.regionCode">
+                <mat-option>Region</mat-option>
+                <mat-option *ngFor="let region of regionObj"
+                 [value]="region.regionCode">
+                  {{region.regionNameENG}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlregionCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <mat-label>Country</mat-label>
+                <mat-select required
+                formControlName="ControlcountryCode"
+                [(ngModel)]="bindObj.countryCode">
+                <mat-option>Country</mat-option>
+                <mat-option *ngFor="let country1 of countryObj"
+                 [value]="country1.countryCode">
+                  {{country1.Country_Name_ENg}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlcountryCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label>State</mat-label>
+                <mat-select required
+                formControlName="ControlstateCode"
+                [(ngModel)]="bindObj.stateCode">
+                <mat-option>State</mat-option>
+                <mat-option *ngFor="let state of statesObj" [value]="state.state_Code">
+                  {{state.State_Name_Eng}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlstateCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <input matInput placeholder="Latitude" required 
+                formControlName="Controllatitude"
+                 [(ngModel)]="bindObj.latitude" #txtlatitude
+                  name="txtlatitude">
+                  <mat-error>
+                  {{ formErrors['Controllatitude'] }}
+                  </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <input matInput placeholder="Longitude" 
+                [(ngModel)]="bindObj.longitude" required 
+                formControlName="Controllongitude"
+                #txtlongitude
+                  name="txtlongitude">
+                  <mat-error>
+                  {{ formErrors['Controllongitude'] }}
+                  </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <input matInput placeholder="Redius" 
+                formControlName="ControlRedius" required
+                [(ngModel)]="bindObj.redius" #txtredius
+                  name="txtredius">
+                  <mat-error>
+                  {{ formErrors['ControlRedius'] }}
+                  </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <input matInput placeholder="PIN" 
+                [(ngModel)]="bindObj.pinCode" #txtpinCode
+                formControlName="ControlpinCode"
+                  name="txtpinCode">
+                  <mat-error>
+                  {{ formErrors['ControlpinCode'] }}
+                  </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <mat-label>Colour</mat-label>
+                <mat-select required
+                formControlName="ControlcolourCode"
+                [(ngModel)]="bindObj.colourCode">
+                <mat-option>Colour</mat-option>
+                <mat-option *ngFor="let colour of colourObj"
+                 [value]="colour.colourCode">
+                  {{colour.colourNameENG}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlcolourCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label>Geofence</mat-label>
+                <mat-select required
+                formControlName="ControlgeofenceCode"
+                [(ngModel)]="bindObj.geofenceCode">
+                <mat-option>Geofence</mat-option>
+                <mat-option value="1">Yes</mat-option>
+                <mat-option value="0">No</mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlgeofenceCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <mat-label>Shared</mat-label>
+                <mat-select required
+                formControlName="ControlsharedCode"
+                [(ngModel)]="bindObj.sharedCode">
+                <mat-option>Shared</mat-option>
+                <mat-option value="1">Yes</mat-option>
+                <mat-option value="0">No</mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlsharedCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label>Circuit</mat-label>
+                <mat-select required
+                formControlName="ControlcircuitCode"
+                [(ngModel)]="bindObj.circuitCode">
+                <mat-option>Circuit</mat-option>
+                <mat-option value="1">Double Circuit</mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlcircuitCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <mat-label>Conductor</mat-label>
+                <mat-select required
+                formControlName="ControlconductorCode"
+                [(ngModel)]="bindObj.conductorCode">
+                <mat-option>Conductor</mat-option>
+                <mat-option value="1">
+                  NA
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlconductorCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label>Classification</mat-label>
+                <mat-select required 
+                formControlName="ControlclassificationCode"
+                [(ngModel)]="bindObj.classificationCode">
+                <mat-option>Classification</mat-option>
+                <mat-option value="1">
+                  NA
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlclassificationCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <mat-label>structure</mat-label>
+                <mat-select required 
+                formControlName="ControlstructureCode"
+                [(ngModel)]="bindObj.structureCode">
+                <mat-option>structure</mat-option>
+                <mat-option value="1">
+                  NA
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlstructureCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-4">
+                <mat-label>Position</mat-label>
+                <mat-select required 
+                formControlName="ControlpositionCode"
+                [(ngModel)]="bindObj.positionCode">
+                <mat-option>Position</mat-option>
+                <mat-option value="1">
+                  NA
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControlpositionCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>   
+            <div class="row">
+              <div class="col-md-2"></div>
+              <mat-form-field class="col-md-4">
+                <mat-label>Device</mat-label>
+                <mat-select required
+                formControlName="ControldeviceIdCode"
+                [(ngModel)]="bindObj.deviceId">
+                <mat-option>Device</mat-option>
+                <mat-option *ngFor="let device of deviceObj"
+                 [value]="device.deviceId">
+                  {{device.deviceName}}
+                </mat-option>
+                </mat-select>
+                <mat-error>
+                {{ formErrors['ControldeviceIdCode'] }}
+                </mat-error>
+              </mat-form-field>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row">      
+              <div class="col-md-2"></div>        
+              <mat-form-field class="col-md-8">
+                <input matInput placeholder="Address" 
+                [(ngModel)]="bindObj.address" #txtaddress
+                formControlName="Controladdress"
+                  name="txtaddress">
+              </mat-form-field> </div>
+          </div>
+          <div class="card-footer">
+              <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+                      <button mat-raised-button [disabled]="!form.valid" (click)="save(ObjForm)"
+                          color="primary">Submit</button>
+                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <button mat-raised-button color="warn" routerLink="/AssetList">
+                          Cancel</button>
+                  </div>
+                  <div class="col-md-4"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.row style="display: none;"-->
+  </div>
+</form>
+<div style="display: none;"> {{bindObj | json}}</div>

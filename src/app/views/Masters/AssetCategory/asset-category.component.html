@@ -1,0 +1,122 @@
+<form #ObjForm="ngForm" [formGroup]="form" autocomplete="off">
+    
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-11 container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Asset Category</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Asset Category Code"
+                                [(ngModel)]="bindObj.assetCategoryCode"
+                                formControlName="ControlassetCategoryCode"
+                                #txtControlassetCategoryCode
+                                name="txtControlassetCategoryCode">
+                                <mat-error>
+                                    {{ formErrors['ControlassetCategoryCode'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Category Name"
+                                [(ngModel)]="bindObj.assetCategoryNameENG" required
+                                formControlName="ControlCategoryNameENG"
+                                #txtassetCategoryNameENG
+                                name="txtassetCategoryNameENG">
+                                <mat-error>
+                                    {{ formErrors['ControlCategoryNameENG'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row" style="display: none;">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput
+                                placeholder="Category Name"
+                                [(ngModel)]="bindObj.assetCategoryNameUNI" 
+                                formControlName="ControlassetCategoryNameUNI"
+                                #txtassetassetCategoryNameUNI
+                                name="txtassetassetCategoryNameUNI">
+                                <mat-error>
+                                    {{ formErrors['ControlassetCategoryNameUNI'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <mat-label>Asset Group</mat-label>
+                                <mat-select required 
+                                formControlName="ControlassetGroup"
+                                 [(ngModel)]="bindObj.assetGroupCode">
+                                    <mat-option>Asset Group</mat-option>
+                                    <mat-option *ngFor="let obj of assetGroupdrp"
+                                     [value]="obj.assetGroupCode">
+                                      {{obj.assetGroupNameENG}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error>
+                                    {{ formErrors['ControlassetGroup'] }}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <mat-label>Colour</mat-label>
+                                <mat-select required 
+                                formControlName="Controlcolour"
+                                 [(ngModel)]="bindObj.colourCode">
+                                    <mat-option>Colour</mat-option>
+                                    <mat-option *ngFor="let obj of colourdrp"
+                                     [value]="obj.colourCode">
+                                      {{obj.colourNameENG}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error>
+                                    {{ formErrors['Controlcolour'] }}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-sm-4" style="padding-top: 20px;">
+                                <mat-checkbox name="chkisActive" #chkisActive formControlName="ControlisActive"
+                                    [(ngModel)]="bindObj.isActive">Active
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <button mat-raised-button [disabled]="!form.valid" 
+                                (click)="save(ObjForm)"
+                                    color="primary">Submit</button> &nbsp;
+                                    &nbsp; &nbsp; &nbsp; &nbsp;
+                                <button mat-raised-button color="warn" routerLink="/AssetCategoryList">
+                                    Cancel</button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+    </div>
+</form>
+<div> {{bindObj | json}}</div>

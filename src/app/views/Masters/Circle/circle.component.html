@@ -1,0 +1,92 @@
+<form #Objcircle="ngForm" [formGroup]="form" autocomplete="off">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-11 container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Circle</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput placeholder="Circle Code" [(ngModel)]="bindObj.circleCode"
+                                    formControlName="ControlcircleCode" #txtcircleCode name="txtcircleCode">
+                                <mat-error>
+                                    {{ formErrors['ControlcircleCode'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput placeholder="Circle Name" [(ngModel)]="bindObj.circleNameENG"
+                                    required formControlName="ControlcircleNameENG" #txtcircleNameENG
+                                    name="txtcircleNameENG">
+                                <mat-error>
+                                    {{ formErrors['ControlcircleNameENG'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row" style="display: none;">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput placeholder="Circle Name UNI"
+                                 [(ngModel)]="bindObj.circleNameUNI"
+                                    formControlName="ControlcircleNameUNI"
+                                     #txtcircleNameUNI name="txtcircleNameUNI">
+                                <mat-error>
+                                    {{ formErrors['ControlcircleNameUNI'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <mat-label>Zone</mat-label>
+                                <mat-select required formControlName="ControlzoneCode"
+                                    [(ngModel)]="bindObj.zoneCode">
+                                    <mat-option>Zone</mat-option>
+                                    <mat-option *ngFor="let obj of zonedrp"
+                                     [value]="obj.zoneCode">
+                                      {{obj.zoneNameENG}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error>
+                                    {{ formErrors['ControlzoneCode'] }}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-sm-4" style="padding-top: 20px;">
+                                <mat-checkbox name="chkisActive" #chkisActive formControlName="ControlisActive"
+                                    [(ngModel)]="bindObj.isActive">Active
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <button mat-raised-button [disabled]="!form.valid"                                 
+                                    color="primary" (click)="save(Objcircle)">Submit</button>
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                <button mat-raised-button color="warn" routerLink="/CircleList">
+                                    Cancel</button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+    </div>
+</form>
+<div style="display: none;"> {{bindObj | json}}</div>

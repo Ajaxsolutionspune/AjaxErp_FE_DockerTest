@@ -1,0 +1,75 @@
+<div class="form-group">
+
+  <div class="row">
+
+    <div class="col-md-3">Question Id</div>
+    <div class="col-md-3">Question</div>
+    <div class="col-md-2">Status</div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-3">
+      <input id="txtquestionID" required name="txtquestionID" type="text" class="form-control" placeholder="Question ID"
+        (input)="resultChanged()" [(ngModel)]="bindObj.questionId">
+    </div>
+    <div class="col-md-3">
+      <input id="txtquestion" required name="txtquestion" type="text" class="form-control" placeholder="Question"
+        (input)="resultChanged()" [(ngModel)]="bindObj.question">
+    </div>
+    <div class="col-md-2">
+      <select id="ShiftId" name="ShiftId" (change)="resultChanged()" [(ngModel)]="bindObj.isActive"
+        class="form-control">
+        <option value="3">All</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <button class="col-md-12 btn btn-primary icons font-1xl icon-plus" title="Add Question"
+        routerLink="/Question"></button>
+    </div>
+    <div class="col-md-1">
+      <i class="fa fa-file-excel-o"  style="font-size:35px;color: #20a8d8" aria-hidden="true" (click)="ExportToExcel()"></i>
+    </div>
+  </div>
+
+</div>
+
+<table class="table table-responsive-sm table-hover table-outline mb-0">
+  <thead class="thead-light">
+    <tr>
+      <th>Question Id</th>
+      <th>Question</th>
+      <th>Question Type</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Oject of arrOject | paginate: config">
+      <td>
+        <div>{{Oject.questionId}}</div>
+      </td>
+      <td>
+        {{Oject.question}}
+      </td>
+      <td>
+        {{Oject.qaTypeCode}}
+      </td>
+      <!--<td [ngSwitch]="Oject.isActive">
+        <span *ngSwitchCase="Active">Active</span>
+        <span *ngSwitchDefault>Inactive</span>
+      </td> -->
+      <td>
+        {{Oject.isActive}}
+      </td>
+      <td [ngSwitch]="1">
+          <button mat-icon-button [routerLink]="['/Question/',Oject.questionId]"
+           color="accent">
+            <mat-icon  color="#FFFFFF" aria-label="Edit">edit</mat-icon>
+          </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>

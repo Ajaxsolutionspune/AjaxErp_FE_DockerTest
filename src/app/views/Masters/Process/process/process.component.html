@@ -1,0 +1,73 @@
+<form #processForm="ngForm" [formGroup]="form" autocomplete="off">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-11 container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Process</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-2">
+                                <input matInput #processId spellcheck="false" [(ngModel)]="process.processId"
+                                    placeholder="Process ID" formControlName="ControlprocessId">
+                                <mat-error>
+                                    {{ formErrors['ControlprocessId'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <mat-form-field class="col-md-4">
+                                <input matInput #processName 
+                                spellcheck="false" [(ngModel)]="process.processName" 
+                                (keypress)="omit_special_char($event)" 
+                                placeholder="Process Name *" maxlength="50" formControlName="ControlprocessName">
+                                <mat-error>
+                                    {{ formErrors['ControlprocessName'] }}
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-sm-4" style="padding-top: 20px;">
+                                <mat-checkbox name="chkgeofence" #chkgeofence formControlName="Controlgeofence"
+                                    [(ngModel)]="process.geofence">Geofence
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-sm-4" style="padding-top: 20px;">
+                                <mat-checkbox name="chkisActive" #chkisActive formControlName="ControlisActive"
+                                    [(ngModel)]="process.isActive">Active
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <button mat-raised-button [disabled]="!form.valid" (click)="save(processForm)"
+                                    color="primary">Submit</button>
+                                &nbsp; &nbsp; &nbsp; &nbsp;
+                                <button mat-raised-button color="warn" routerLink="/ProcessList">
+                                    Cancel</button>
+                            </div>
+                            <div class="col-md-4"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.row-->
+    </div>
+</form>
+<!--<div style="display: none;"> {{process | json}}</div>-->

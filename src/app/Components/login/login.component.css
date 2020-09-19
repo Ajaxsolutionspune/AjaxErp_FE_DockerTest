@@ -1,0 +1,31 @@
+mat-card {
+  margin: 2em auto;
+  text-align: center;
+}
+.maindiv {
+  margin: 0px;
+  padding: 0px;
+  height: 92vh;
+  display: flex;
+  justify-content: center;
+  background-repeat: no-repeat;
+  align-items: center;; 
+}
+
+.subdiv {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../../assets/img/Content/electricity.jpg"); 
+}
+
+.logo {
+  width: 100%;
+  content: url("../../../assets/img/brand/Logo_2.jpg");
+}
+.ajaxlog {
+  content: url("../../../assets/img/brand/ajax_logo.png");
+}
+
+mat-form-field {
+  display: block;
+}
